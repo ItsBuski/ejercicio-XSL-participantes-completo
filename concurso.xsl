@@ -105,14 +105,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <xsl:for-each select="//participante[not (provincia=preceding::provincia)]">
+                        <xsl:sort select="provincia"/>
+                        <xsl:variable name="v_provincia" select="provincia"/>
                             <tr>
-                                <td>Provincia A</td>
-                                <td>15</td>
+                                <td><xsl:value-of select="provincia"/></td>
+                                <td><xsl:value-of select="count(//participante[provincia=$v_provincia])"/></td>
                             </tr>
-                            <tr>
-                                <td>Provincia B</td>
-                                <td>10</td>
-                            </tr>
+                        </xsl:for-each>
                         </tbody>
                     </table>
                 </div>
